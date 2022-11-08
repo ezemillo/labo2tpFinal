@@ -102,6 +102,7 @@ void generarFechaActual(char unArregloFecha[])
     strcpy(unArregloFecha, output);
 }
 
+
 void mostrarCorrecto(int unInt)
 {
     if (unInt == 1)
@@ -126,6 +127,8 @@ int crearMenuModificarCliente()
     opcionSeleccionada = gestionarMenu(titulo, opciones, cantidadDeOpciones, opcionSeleccionada);
     return opcionSeleccionada;
 }
+
+
 
 void gestionarModificarClienteAdmin(char pedidos[], char productos[], char clientes[], int *id, int opcionSeleccionada)
 {

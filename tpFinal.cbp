@@ -31,6 +31,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="arbol.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="arbol.h" />
 		<Unit filename="clientes.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -46,6 +50,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="menu.h" />
+		<Unit filename="nodoPedido.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="nodoPedido.h" />
 		<Unit filename="pedidos.c">
 			<Option compilerVar="CC" />
 		</Unit>
