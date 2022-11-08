@@ -6,6 +6,9 @@ typedef struct _nodoPedido{
     int modificado;    /// 0 si no se modifico
 	struct _nodoPedido* sig;
 }nodoPedido;
+//crearListaDePedidoPoridCliente
+//crearNodoPedido
+//agregarPedidoAlFinal (pasar solo los pedidos que estan activos? o todos?) agregar al final porque estan ordenados por fecha de creacion
 
 
 
