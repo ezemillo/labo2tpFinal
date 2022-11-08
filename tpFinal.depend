@@ -172,7 +172,25 @@
 	<stdlib.h>
 	<windows.h>
 
-1667230232 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\labo2tpfinal\main.c
+1667934788 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\labo2tpfinal\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<time.h>
+	<windows.h>
+	"gotoxy.h"
+	"clientes.h"
+	"pedidos.h"
+	"productos.h"
+	"menu.h"
+
+1667230232 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\labo2tpfinal\gotoxy.h
+
+1667934089 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\labo2tpfinal\clientes.c
+	"clientes.h"
+
+1667934089 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\labo2tpfinal\clientes.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -181,5 +199,23 @@
 	<windows.h>
 	"gotoxy.h"
 
-1667230232 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\labo2tpfinal\gotoxy.h
+1667933430 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\labo2tpfinal\menu.c
+
+1667933352 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\labo2tpfinal\pedidos.c
+
+1667933940 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\labo2tpfinal\pedidos.h
+
+1667934788 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\labo2tpfinal\productos.h
+
+1667933940 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\labo2tpfinal\menu.h
+
+1667935125 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\labo2tpfinal\productos.c
+	"productos.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<time.h>
+	<windows.h>
+	"gotoxy.h"
 

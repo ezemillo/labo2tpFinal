@@ -8,29 +8,13 @@
 #define TeclaArriba 72
 #define TeclaAbajo 80
 #define Enter 13
+#include "clientes.h"
+#include "pedidos.h"
+#include "productos.h"
+#include "menu.h"
 
-typedef struct
-{
-    int idProducto;
-    char nombreProducto[15];
-    char categoria[15];
-    float precio;
-    int cantidad;
-    int hayStock; // indica 1 activo y 0 anulado
-} stProducto;
 
-typedef struct
-{
-    int idCliente; // auto incremental
-    char nombre[30];
-    char apellido[30];
-    char userName[20];
-    char password[20];
-    char mail[30];
-    char genero;
-    int rol;    // 1: es admin - 0: es com n
-    int activo; // indica 1 activo y 0 inactivo
-} stCliente;
+
 
 typedef struct
 {
@@ -77,24 +61,7 @@ int gestionarMenu(char *titulo, char *opciones[], int cantidadDeOpciones, int op
 void volverAlMenuClientes(char clientes[], char pedidos[], char productos[], int *idClienteActivo);
 void volverAlMenuAdministrador(char clientes[], char pedidos[], char productos[], int *idClienteActivo);
 
-/// Productos
-void mostrarProducto(stProducto *unProducto);
-void crearProductoAdmin(stProducto *unProducto, int idProducto);
-int crearProductoAdminyGuardarEnArchivo(stProducto *unProducto, char archivoProducto[]);
-int generarIdProducto(char archivoProducto[]);
-int pasarProductoaArchivo(char archivoProducto[], stProducto *unProducto, int posicion);
-void mostrarunProductoEnArchivo(int pos, char archivoProducto[]);
-void mostrarTodosProductosenArchivo(char archivoProductos[]);
-int modificarProductoEnArchivo(char archivoProducto[], int idProducto);
-int pasarProductoDesdeArchivo(char archivoProducto[], stProducto *unProducto, int posicion);
-int bajaDeProducto(char archivoProducto[], int posProducto);
-void mostrarProductoClientes(stProducto *unProducto);
-void mostrarTodosProductosenArchivoClientes(char archivoProductos[]);
-void agregarProductoAArreglo(stProducto unArregloProducto[], char archivoProductos[], int *validos, int idProducto);
-void mostrarProductosenArreglo(stProducto unArregloProducto[], int *validos);
-float costoTotalArreglo(stProducto unArregloProductos[], int validos);
-void modificarProductoDeUnArreglo(stProducto unArregloProducto[], int *validos, int posProducto, int cantidad);
-int buscarPosProductoEnArreglo(stProducto unArregloProducto[], int *validos, int idProducto);
+
 
 /// Pedidos
 void mostrarPedido(stPedido unPedido);
@@ -112,15 +79,7 @@ int bajaDePedido(char archivoPedidos[], int posPedido);
 int pasarPedidoDesdeArchivo(char archivoPedido[], stPedido *unPedido4, int posicion);
 float costoTotalPedido(stPedido unPedido);
 
-/// Clientes
-int idClienteNuevo(char archivo[]);
-void bajaDeCliente(char archivo[]);
-void altaDeCliente(char archivo[], int rol);
-int verificarClienteYaExiste(char archivo[], stCliente clienteIngreso);
-int login(char archivo[], int *idCliente);
-void MostrarArchivoClientes(char archivo[]);
-void gestionarModificarCliente(char pedidos[], char productos[], char clientes[], int *id, int opcionSeleccionada, int rol);
-void altaDeClienteAdmin(char archivo[]);
+
 
 int main()
 {
@@ -155,232 +114,8 @@ void mostrarCorrecto(int unInt)
     }
 }
 
-int idClienteNuevo(char archivo[])
-{
-    FILE *archi;
-    archi = fopen(archivo, "rb");
-    stCliente a;
-    int i = 0;
-    if (archi != NULL)
-    {
-        fseek(archi, sizeof(stCliente), SEEK_END);
-        i = ftell(archi) / sizeof(stCliente);
-    }
-    return i++;
-}
 
-void bajaDeCliente(char archivo[])
-{
-    stCliente cliente;
-    FILE *archivito;
-    archivito = fopen(archivo, "r+b");
-    int aux = 0;
-    char ok = 's';
-    char myUserName[20];
 
-    printf("Ingrese el usuario que quiere dar de baja\n");
-    fflush(stdin);
-    scanf("%s", myUserName);
-
-    if (archivito != NULL && ok == 's')
-    {
-        while (aux == 0 && (fread(&cliente, sizeof(stCliente), 1, archivito) > 0))
-        {
-
-            if (strcmp(cliente.userName, myUserName) == 0)
-            {
-                cliente.activo = 0;
-                fseek(archivito, (-1) * sizeof(stCliente), SEEK_CUR);
-                fwrite(&cliente, sizeof(stCliente), 1, archivito);
-                aux = 1;
-            }
-        }
-    }
-    fclose(archivito);
-}
-
-void altaDeCliente(char archivo[], int rol)
-{
-    stCliente cliente;
-    FILE *archivito;
-    archivito = fopen(archivo, "ab");
-    int var;
-
-    if (archivito != NULL)
-    {
-        cliente.idCliente = idClienteNuevo(archivo);
-
-        do
-        {
-            printf("Ingrese nombre: ");
-            fflush(stdin);
-            scanf("%s", cliente.nombre);
-        } while (strlen(cliente.nombre) > 30);
-        do
-        {
-            printf("Ingrese apellido: ");
-            fflush(stdin);
-            scanf("%s", cliente.apellido);
-        } while (strlen(cliente.apellido) > 30);
-        do
-        {
-            printf("Ingrese username: ");
-            fflush(stdin);
-            scanf("%s", cliente.userName);
-            var = verificarClienteYaExiste(archivo, cliente);
-        } while (var == 0 || strlen(cliente.userName) > 20);
-        do
-        {
-            printf("Ingrese password: ");
-            fflush(stdin);
-            scanf("%s", cliente.password);
-        } while (strlen(cliente.password) > 20);
-
-        do
-        {
-            printf("Ingrese email: ");
-            fflush(stdin);
-            scanf("%s", cliente.mail);
-        } while (strlen(cliente.mail) > 30);
-        do
-        {
-            printf("Ingrese genero (M/F): ");
-            fflush(stdin);
-            scanf("%c", &cliente.genero);
-        } while (cliente.genero != 'm' && cliente.genero != 'f');
-        if (rol == 1)
-        {
-            cliente.rol = 1;
-        }
-        else
-        {
-            cliente.rol = 0;
-        }
-        cliente.activo = 1;
-
-        fwrite(&cliente, sizeof(stCliente), 1, archivito);
-        fclose(archivito);
-    }
-    else
-    {
-        printf("ERROR de datos - El archivo no pudo ser abierto");
-    }
-}
-
-int verificarClienteYaExiste(char archivo[], stCliente clienteIngreso)
-{
-    FILE *archivito;
-    stCliente cliente;
-    archivito = fopen(archivo, "rb");
-    int resultado;
-
-    if (archivito != NULL)
-    {
-        while (fread(&cliente, sizeof(stCliente), 1, archivito) > 0)
-        {
-            resultado = strcmp(cliente.userName, clienteIngreso.userName);
-
-            if (resultado == 0)
-            {
-                printf("YA EXISTE EL USERNAME\n");
-            }
-        }
-    }
-    return resultado;
-}
-
-int login(char archivo[], int *idCliente)
-{
-    FILE *archivito;
-    stCliente cliente;
-    stCliente clienteIngreso;
-    archivito = fopen(archivo, "rb");
-    int rol, resultadoUser, resultadoPass = 2;
-
-    // se usa solo en el primer login cuando no hay admin y no existe el archivo de clientes
-
-    if (archivito == NULL)
-    {
-        puts("No se encontro el usuario admin, vamos a crearlo");
-        altaDeClienteAdmin(archivo);
-        system("cls");
-        archivito = fopen(archivo, "rb");
-    }
-    if (archivito != NULL)
-    {
-        puts("--Login--");
-        printf("Ingrese username\n");
-        fflush(stdin);
-        scanf("%s", clienteIngreso.userName);
-        printf("Ingrese password\n");
-        fflush(stdin);
-        scanf("%s", clienteIngreso.password);
-        while (resultadoUser != 0 && resultadoPass != 0 && fread(&cliente, sizeof(stCliente), 1, archivito) > 0)
-        {
-            resultadoUser = strcmpi(cliente.userName, clienteIngreso.userName);
-            if (resultadoUser == 0)
-            {
-                resultadoPass = strcmpi(cliente.password, clienteIngreso.password);
-            }
-        }
-    }
-    if (resultadoUser == 0 && resultadoPass == 0 && cliente.activo == 1)
-    {
-        printf("\nIngresaste con exito\n");
-        rol = cliente.rol;
-        Sleep(500);
-        *idCliente = cliente.idCliente;
-    }
-    else if (resultadoUser != 0)
-    {
-        printf("\tEL USUARIO INGRESADO NO EXISTE\n");
-        printf("\tPOR FAVOR, REGISTRE UN NUEVO USUARIO\n");
-        Sleep(1000);
-    }
-    else if (resultadoPass != 0)
-    {
-        printf("\tContrase%ca incorrecta\n", 164);
-        Sleep(500);
-    }
-    else if (cliente.activo == 0)
-    {
-
-        puts("Tu cuenta se encuentra inactiva, comunicate con el administrador");
-        Sleep(2000);
-    }
-
-    fclose(archivito);
-
-    return rol;
-}
-
-void MostrarArchivoClientes(char archivo[])
-{
-    FILE *archivito;
-    stCliente cliente;
-    archivito = fopen(archivo, "rb");
-    int i = 0;
-
-    if (archivito != NULL)
-    {
-        while (fread(&cliente, sizeof(stCliente), 1, archivito) > 0)
-        {
-            printf("\n Registro numero %d", i++);
-            puts("\n-------------------------------------");
-            printf("\n IdCliente: %d", cliente.idCliente);
-            printf("\n Nombre: %s", cliente.nombre);
-            printf("\n Apellido: %s", cliente.apellido);
-            printf("\n Username: %s", cliente.userName);
-            printf("\n Password: %s", cliente.password);
-            printf("\n Mail: %s", cliente.mail);
-            printf("\n Genero: %c", cliente.genero);
-            printf("\n Rol: %d", cliente.rol);
-            printf("\n Activo: %d", cliente.activo);
-            puts("\n-------------------------------------");
-        }
-    }
-    fclose(archivito);
-}
 
 int crearMenuModificarCliente()
 {
@@ -397,79 +132,6 @@ void gestionarModificarClienteAdmin(char pedidos[], char productos[], char clien
     gestionarModificarCliente(pedidos, productos, clientes, id, opcionSeleccionada, 1);
 }
 
-void gestionarModificarCliente(char pedidos[], char productos[], char clientes[], int *id, int opcionSeleccionada, int rol)
-{
-    stCliente cliente;
-    FILE *archivito;
-    archivito = fopen(clientes, "r+b");
-    int resultado = 0;
-    char usuario[20];
-    if (archivito != NULL)
-    {
-        while (fread(&cliente, sizeof(stCliente), 1, archivito) > 0)
-        {
-
-            if (cliente.idCliente == *id)
-            {
-                switch (opcionSeleccionada)
-                {
-                case 0:
-                    printf("\nIngrese nuevo nombre:");
-                    fflush(stdin);
-                    scanf("%s", cliente.nombre);
-                    break;
-                case 1:
-                    printf("\nIngrese nuevo apellido:");
-                    fflush(stdin);
-                    scanf("%s", cliente.apellido);
-                    break;
-                case 2:
-                    do
-                    {
-                        printf("\nIngrese nuevo usuario: ");
-                        fflush(stdin);
-                        scanf("%s", cliente.userName);
-                        resultado = verificarClienteYaExiste(clientes, cliente);
-                    } while (resultado == 0);
-                    break;
-                case 3:
-                    printf("\nIngrese nueva password: ");
-                    fflush(stdin);
-                    scanf("%s", cliente.password);
-                    break;
-                case 4:
-                    printf("\nIngrese nuevo mail: ");
-                    fflush(stdin);
-                    scanf("%s", cliente.mail);
-                    break;
-                case 5:
-                    if (rol == 1)
-                    {
-                        volverAlMenuAdministrador(clientes, pedidos, productos, id);
-                    }
-                    else
-                    {
-                        volverAlMenuClientes(clientes, pedidos, productos, id);
-                    }
-                    break;
-                }
-
-                fseek(archivito, (-1) * sizeof(stCliente), SEEK_CUR);
-                fwrite(&cliente, sizeof(stCliente), 1, archivito);
-                fseek(archivito, sizeof(stCliente), SEEK_END);
-            }
-        }
-    }
-    fclose(archivito);
-    if (rol == 1)
-    {
-        volverAlMenuAdministrador(clientes, pedidos, productos, id);
-    }
-    else
-    {
-        volverAlMenuClientes(clientes, pedidos, productos, id);
-    }
-}
 
 ///---------------------- Funciones Pedidos --------------------------
 ///-----generales---------
@@ -726,184 +388,11 @@ int pasarPedidoDesdeArchivo(char archivoPedido[], stPedido *unPedido4, int posic
 
 ///--------generales
 
-void mostrarProducto(stProducto *unProducto)
-{
 
-    printf("\n\t| %s | ", unProducto->nombreProducto);
-    printf("\n\t| ID: %d |", unProducto->idProducto);
 
-    printf("\n\t| Categoria: %s | \n ", unProducto->categoria);
-    if (unProducto->hayStock == 1)
-    {
-        printf("\n\t| Disponible | \n");
-    }
-    else
-    {
-        puts("\n\t| Sin stock | \n");
-    }
-    printf("\n\t| Cantidad: %d | ", unProducto->cantidad);
-    printf("\n\t| Precio unitario: %.2f | ", unProducto->precio);
-    printf("\n\t| Subtotal: %.2f \n", (unProducto->precio * unProducto->cantidad));
-}
-
-void crearProductoAdmin(stProducto *unProducto, int idProducto)
-{
-    unProducto->idProducto = idProducto;
-
-    puts("\n\t Ingrese el nombre del producto: \n");
-    fflush(stdin);
-    gets(unProducto->nombreProducto);
-
-    puts("\n\t Ingrese el precio: \n");
-    scanf("%f", &unProducto->precio);
-
-    puts("\n\t Ingrese la categoria del producto: \n");
-    fflush(stdin);
-    gets(unProducto->categoria);
-
-    puts("\n\t Ingrese la cantidad a ingresar: \n");
-    scanf("%d", &unProducto->cantidad);
-
-    puts("\n\t Desea activar el producto 1 para activar, 0 para desactivar: \n");
-    scanf("%d", &unProducto->hayStock);
-}
-
-int crearProductoAdminyGuardarEnArchivo(stProducto *unProducto, char archivoProducto[])
-{
-    int valida = 0;
-    int idProducto = generarIdProducto(archivoProducto);
-    crearProductoAdmin(unProducto, idProducto);
-    mostrarProducto(unProducto);
-    valida = pasarProductoaArchivo(archivoProducto, unProducto, idProducto);
-
-    return valida;
-}
-
-int generarIdProducto(char archivoProducto[])
-{
-
-    FILE *puntFile;
-    puntFile = fopen(archivoProducto, "rb");
-    int idProducto = 0;
-    long int pesoArchivo;
-    if (puntFile == NULL)
-    {
-        puntFile = fopen(archivoProducto, "wb");
-        fclose(puntFile);
-        puntFile = fopen(archivoProducto, "rb");
-    }
-
-    if (puntFile != NULL)
-    {
-        fseek(puntFile, 0, SEEK_END);
-        pesoArchivo = ftell(puntFile);
-
-        idProducto = (int)pesoArchivo / sizeof(stProducto);
-
-        fclose(puntFile);
-    }
-
-    return idProducto;
-}
-
-int pasarProductoaArchivo(char archivoProducto[], stProducto *unProducto, int posicion)
-{
-
-    FILE *puntFile;
-    puntFile = fopen(archivoProducto, "r+b");
-    int correcto = 0;
-
-    if (puntFile != NULL)
-    {
-
-        fseek(puntFile, posicion * sizeof(stProducto), SEEK_SET);
-        if (fwrite(unProducto, sizeof(stProducto), 1, puntFile) > 0)
-        {
-            correcto = 1;
-        }
-        fclose(puntFile);
-    }
-    return correcto;
-}
-
-void mostrarunProductoEnArchivo(int pos, char archivoProducto[])
-{
-
-    FILE *puntFile;
-    puntFile = fopen(archivoProducto, "rb");
-    stProducto unProducto;
-
-    if (puntFile != NULL)
-    {
-        fseek(puntFile, pos * sizeof(stProducto), SEEK_SET);
-        if (fread(&unProducto, sizeof(stProducto), 1, puntFile) > 0)
-        {
-            mostrarProducto(&unProducto);
-        }
-        fclose(puntFile);
-    }
-}
-
-void mostrarTodosProductosenArchivo(char archivoProductos[])
-{
-    FILE *puntFile;
-    puntFile = fopen(archivoProductos, "rb");
-    stProducto unProducto;
-
-    if (puntFile != NULL)
-    {
-        while (fread(&unProducto, sizeof(stProducto), 1, puntFile) > 0)
-        {
-            mostrarProducto(&unProducto);
-            puts("\n-----------------------------------------------------------------\n");
-        }
-        fclose(puntFile);
-    }
-}
 
 /// listado de productos para cliente
 
-void mostrarTodosProductosenArchivoClientes(char archivoProductos[])
-{
-    FILE *puntFile;
-    puntFile = fopen(archivoProductos, "rb");
-    stProducto unProducto;
-
-    if (puntFile != NULL)
-    {
-        while (fread(&unProducto, sizeof(stProducto), 1, puntFile) > 0)
-        {
-            mostrarProductoClientes(&unProducto);
-        }
-        fclose(puntFile);
-    }
-}
-
-void mostrarProductoClientes(stProducto *unProducto)
-{
-    printf("\t| %s |", unProducto->nombreProducto);
-    puts("\n");
-    printf("\t| ID: %d |", unProducto->idProducto);
-    puts("\n");
-    printf("\t| Categoria:|%s | ", unProducto->categoria);
-    puts("\n");
-    if (unProducto->hayStock == 1)
-    {
-        printf("\t| Disponible | ");
-        puts("\n");
-    }
-    else
-    {
-        puts("\t| Sin stock | ");
-        puts("\n");
-    }
-    printf("\t| Cantidad: %d |", unProducto->cantidad);
-    puts("\n");
-    printf("\t| Precio unidad: %.2f | ", unProducto->precio);
-    puts("\n");
-    printf("\t| Subtotal: %.2f |\n", unProducto->precio * unProducto->cantidad);
-    puts("\n");
-}
 
 void mostrarProductoAdmin(stProducto *unProducto)
 {
@@ -932,49 +421,10 @@ void mostrarProductoAdmin(stProducto *unProducto)
 
 ///------modificar producto
 
-int modificarProductoEnArchivo(char archivoProducto[], int idProducto)
-{
-    stProducto unProducto;
-    int correcto = 0;
-    crearProductoAdmin(&unProducto, idProducto);
-    correcto = pasarProductoaArchivo(archivoProducto, &unProducto, idProducto);
-
-    return correcto;
-}
 
 ///------ baja de productos
 
-int pasarProductoDesdeArchivo(char archivoProducto[], stProducto *unProducto, int posicion)
-{
 
-    FILE *puntFile;
-    puntFile = fopen(archivoProducto, "rb");
-    int correcto = 0;
-
-    if (puntFile != NULL)
-    {
-
-        fseek(puntFile, posicion * sizeof(stProducto), SEEK_SET);
-        if (fread(unProducto, sizeof(stProducto), 1, puntFile) > 0)
-        {
-            correcto = 1;
-        }
-        fclose(puntFile);
-    }
-    return correcto;
-}
-
-int bajaDeProducto(char archivoProducto[], int posProducto)
-{
-    stProducto unProducto;
-    int correcto = 0;
-
-    correcto = pasarProductoDesdeArchivo(archivoProducto, &unProducto, posProducto);
-    unProducto.hayStock = 0;
-    correcto = pasarProductoaArchivo(archivoProducto, &unProducto, posProducto);
-
-    return correcto;
-}
 
 int crearMenuDeInicio()
 {
@@ -1585,59 +1035,6 @@ void mostrarOpcion(char *opcion, int numeroDeOpcion, int opcionSeleccionada)
     }
 }
 
-void altaDeClienteAdmin(char archivo[])
-{
-    altaDeCliente(archivo, 1);
-}
-
-void agregarProductoAArreglo(stProducto unArregloProducto[], char archivoProductos[], int *validos, int idProducto)
-{
-    FILE *puntFile;
-    puntFile = fopen(archivoProductos, "rb");
-    stProducto unProducto;
-    int cantidad = 0;
-    int opcion = 0;
-
-    if (puntFile != NULL)
-    {
-
-        fseek(puntFile, idProducto * sizeof(stProducto), SEEK_SET);
-        fread(&unProducto, sizeof(stProducto), 1, puntFile);
-        fclose(puntFile);
-    }
-    mostrarProductoClientes(&unProducto);
-
-    puts("\nQuiere Agregar este producto al carrito? 1 para si, 2 para no.\n");
-    scanf("%d", &opcion);
-
-    if (opcion == 1)
-    {
-        if (unProducto.hayStock == 1)
-        {
-            puts("Ingrese la cantidad de unidades que desea agregar");
-            scanf("%d", &cantidad);
-            unProducto.cantidad = cantidad;
-            unArregloProducto[*validos] = unProducto;
-            (*validos)++;
-        }
-        else
-        {
-            puts("Producto sin Stock momentaneamente!");
-        }
-    }
-}
-
-void mostrarProductosenArreglo(stProducto unArregloProducto[], int *validos)
-{
-
-    int i = 0;
-    for (i = 0; i < *validos; i++)
-    {
-
-        mostrarProductoClientes(&unArregloProducto[i]);
-        puts("\n-------------------------------------------------------------------------------\n");
-    }
-}
 
 float costoTotalPedido(stPedido unPedido)
 {
@@ -1650,40 +1047,5 @@ float costoTotalPedido(stPedido unPedido)
     return total;
 }
 
-float costoTotalArreglo(stProducto unArregloProductos[], int validos)
-{
-    float total = 0;
-    for (int i = 0; i < validos; i++)
-    {
-        total = total + (unArregloProductos[i].cantidad * unArregloProductos[i].precio);
-    }
 
-    return total;
-}
 
-void modificarProductoDeUnArreglo(stProducto unArregloProducto[], int *validos, int posProducto, int cantidad)
-{
-
-    if (cantidad < unArregloProducto[posProducto].cantidad)
-    {
-        unArregloProducto[posProducto].cantidad = unArregloProducto[posProducto].cantidad - cantidad;
-    }
-    else
-    {
-        unArregloProducto[posProducto] = unArregloProducto[*validos - 1];
-        *validos = *validos - 1;
-    }
-}
-
-int buscarPosProductoEnArreglo(stProducto unArregloProducto[], int *validos, int idProducto)
-{
-    int pos;
-    for (int i = 0; i < *validos; i++)
-    {
-        if (unArregloProducto[i].idProducto == idProducto)
-        {
-            pos = i;
-        }
-    }
-    return pos;
-}
