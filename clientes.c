@@ -64,39 +64,45 @@ void altaDeCliente(char archivo[], int rol)
             printf("Ingrese nombre: ");
             fflush(stdin);
             scanf("%s", cliente.nombre);
-        } while (strlen(cliente.nombre) > 30);
+        }
+        while (strlen(cliente.nombre) > 30);
         do
         {
             printf("Ingrese apellido: ");
             fflush(stdin);
             scanf("%s", cliente.apellido);
-        } while (strlen(cliente.apellido) > 30);
+        }
+        while (strlen(cliente.apellido) > 30);
         do
         {
             printf("Ingrese username: ");
             fflush(stdin);
             scanf("%s", cliente.userName);
             var = verificarClienteYaExiste(archivo, cliente);
-        } while (var == 0 || strlen(cliente.userName) > 20);
+        }
+        while (var == 0 || strlen(cliente.userName) > 20);
         do
         {
             printf("Ingrese password: ");
             fflush(stdin);
             scanf("%s", cliente.password);
-        } while (strlen(cliente.password) > 20);
+        }
+        while (strlen(cliente.password) > 20);
 
         do
         {
             printf("Ingrese email: ");
             fflush(stdin);
             scanf("%s", cliente.mail);
-        } while (strlen(cliente.mail) > 30);
+        }
+        while (strlen(cliente.mail) > 30);
         do
         {
             printf("Ingrese genero (M/F): ");
             fflush(stdin);
             scanf("%c", &cliente.genero);
-        } while (cliente.genero != 'm' && cliente.genero != 'f');
+        }
+        while (cliente.genero != 'm' && cliente.genero != 'f');
         if (rol == 1)
         {
             cliente.rol = 1;
@@ -266,7 +272,8 @@ void gestionarModificarCliente(char pedidos[], char productos[], char clientes[]
                         fflush(stdin);
                         scanf("%s", cliente.userName);
                         resultado = verificarClienteYaExiste(clientes, cliente);
-                    } while (resultado == 0);
+                    }
+                    while (resultado == 0);
                     break;
                 case 3:
                     printf("\nIngrese nueva password: ");
@@ -312,4 +319,28 @@ void gestionarModificarCliente(char pedidos[], char productos[], char clientes[]
 void altaDeClienteAdmin(char archivo[])
 {
     altaDeCliente(archivo, 1);
+}
+
+int archivoClienteToArray (char clientes[],stCliente arrayClientes[], int dimension)
+{
+
+    FILE * puntFile = fopen(clientes,"rb");
+    stCliente unCliente;
+    int i=0;
+
+    if(puntFile)
+    {
+        while(i<dimension && fread(&unCliente,sizeof(stCliente),1,puntFile)>0)
+        {
+            arrayClientes[i] = unCliente;
+            i++;
+        }
+        fclose(puntFile);
+
+    }
+
+return i;
+
+
+
 }

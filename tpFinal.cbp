@@ -58,10 +58,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="pedidos.h" />
-		<Unit filename="pila.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="pila.h" />
 		<Unit filename="productos.c">
 			<Option compilerVar="CC" />
 		</Unit>

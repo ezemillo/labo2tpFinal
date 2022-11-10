@@ -1,3 +1,4 @@
+#include "pedidos.h"
 
 
 void mostrarPedido(stPedido unPedido)

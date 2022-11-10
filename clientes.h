@@ -1,5 +1,6 @@
 #ifndef CLIENTES_H_INCLUDED
 #define CLIENTES_H_INCLUDED
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -7,6 +8,13 @@
 #include <time.h>
 #include <windows.h> ///me deja utilizar la funcion sleep
 #include "gotoxy.h"  ///me permite cambiar la posicion del cursor
+#define TeclaArriba 72
+#define TeclaAbajo 80
+#define Enter 13
+#include "productos.h"
+#include "pedidos.h"
+#include "menu.h"
+
 
 typedef struct
 {
@@ -30,5 +38,6 @@ int login(char archivo[], int *idCliente);
 void MostrarArchivoClientes(char archivo[]);
 void gestionarModificarCliente(char pedidos[], char productos[], char clientes[], int *id, int opcionSeleccionada, int rol);
 void altaDeClienteAdmin(char archivo[]);
+int archivoClienteToArray (char clientes[],stCliente arrayClientes[], int dimension);
 
 #endif // CLIENTES_H_INCLUDED

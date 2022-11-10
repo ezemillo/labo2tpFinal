@@ -1,9 +1,9 @@
 
 
-nodoArbol* arrayToArbol (stCliente a[], int base, int tope){
+nodoArbolCliente * arrayToArbol (stCliente a[], int base, int tope){
     int medio;
 
-    nodoArbol* arbol=NULL;
+    nodoArbolCliente* arbol=NULL;
 
     if(!(base>tope))
     {

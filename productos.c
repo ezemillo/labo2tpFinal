@@ -1,11 +1,4 @@
 #include "productos.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <conio.h>
-#include <time.h>
-#include <windows.h> ///me deja utilizar la funcion sleep
-#include "gotoxy.h"  ///me permite cambiar la posicion del cursor
 
 void mostrarProducto(stProducto *unProducto)
 {

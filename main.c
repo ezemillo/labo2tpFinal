@@ -8,9 +8,11 @@
 #define TeclaArriba 72
 #define TeclaAbajo 80
 #define Enter 13
+#include "productos.h"
 #include "clientes.h"
 #include "pedidos.h"
-#include "productos.h"
+
+
 #include "menu.h"
 
 
@@ -60,6 +62,7 @@ int main()
     char clientes[] = {"clientes.bin"};
     char pedidos[] = {"pedidos.bin"};
     char productos[] = {"productos.bin"};
+
     int idClienteActivo = 1;
     crearApp(clientes, pedidos, productos, &idClienteActivo);
     return 0;

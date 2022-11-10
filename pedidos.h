@@ -1,6 +1,20 @@
 #ifndef PEDIDOS_H_INCLUDED
 #define PEDIDOS_H_INCLUDED
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <conio.h>
+#include <time.h>
+#include <windows.h> ///me deja utilizar la funcion sleep
+#include "gotoxy.h"  ///me permite cambiar la posicion del cursor
+#define TeclaArriba 72
+#define TeclaAbajo 80
+#define Enter 13
+#include "productos.h"
+#include "clientes.h"
+#include "menu.h"
+
 
 typedef struct
 {
