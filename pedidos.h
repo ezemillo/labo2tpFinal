@@ -7,20 +7,17 @@
 #include <conio.h>
 #include <time.h>
 #include <windows.h> ///me deja utilizar la funcion sleep
-#include "gotoxy.h"  ///me permite cambiar la posicion del cursor
-#define TeclaArriba 72
-#define TeclaAbajo 80
-#define Enter 13
 #include "productos.h"
 #include "clientes.h"
 #include "menu.h"
+
 
 
 typedef struct
 {
     int idPedido;   // auto incremental
     int idCliente;  // este valor corresponde al id del cliente que realizo  el pedido
-    char fecha[12]; // dd/MM/aaaa
+    char fecha[12];
     stProducto productos[20];
     int cantProductos;
     char descripcion[300];
@@ -32,7 +29,7 @@ void mostrarPedido(stPedido unPedido);
 int pasarPedidoaArchivo(char archivoPedido[], stPedido *unPedido4, int posicion);
 int pasarPedidoPoridClienteaArreglo(int idCliente, stPedido unArregloPedidos[], int dimArreglo, char archivoPedido[]);
 int generarNumeroPedido(char archivoPedido[]);
-void crearPedido(stPedido *unPedido, int idCliente, int idPedido, int validosProductos, stProducto unArregloProductos[]);
+void crearPedido(stPedido* unPedido, int idCliente, int idPedido, int validosProductos, stProducto unArregloProductos[]);
 int crearPedidoyGuardarEnArchivo(char archivoPedido[], int idCliente, int validosProductos, stProducto arregloProducto[]);
 void mostrarTodosPedidosenArchivo(char archivoPedidos[]);
 int buscarPosPedidoPoridCliente(int idCliente, int posInicial, char archivoPedido[], int vistaAdmin);
@@ -42,5 +39,7 @@ int modificarPedidoEnArchivo(char archivoPedidos[], int posPedido, int idCliente
 int bajaDePedido(char archivoPedidos[], int posPedido);
 int pasarPedidoDesdeArchivo(char archivoPedido[], stPedido *unPedido4, int posicion);
 float costoTotalPedido(stPedido unPedido);
+void generarFechaActual(char unArregloFecha[]);
+
 
 #endif // PEDIDOS_H_INCLUDED

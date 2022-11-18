@@ -1,22 +1,18 @@
 #ifndef PRODUCTOS_H_INCLUDED
 #define PRODUCTOS_H_INCLUDED
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+
+#include <strings.h>
 #include <conio.h>
 #include <time.h>
 #include <windows.h> ///me deja utilizar la funcion sleep
-#include "gotoxy.h"  ///me permite cambiar la posicion del cursor
+#include "gotoxy.h"
 #define TeclaArriba 72
 #define TeclaAbajo 80
 #define Enter 13
-#include "clientes.h"
-#include "pedidos.h"
-#include "menu.h"
 
 
-typedef struct _stProducto
+typedef struct
 {
     int idProducto;
     char nombreProducto[15];
@@ -24,7 +20,7 @@ typedef struct _stProducto
     float precio;
     int cantidad;
     int hayStock; // indica 1 activo y 0 anulado
-} stProducto;
+}stProducto;
 
 
 /// Productos

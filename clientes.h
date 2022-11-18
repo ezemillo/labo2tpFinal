@@ -14,6 +14,8 @@
 #include "productos.h"
 #include "pedidos.h"
 #include "menu.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 
 typedef struct

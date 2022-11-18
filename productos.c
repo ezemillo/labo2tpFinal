@@ -1,4 +1,6 @@
 #include "productos.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 void mostrarProducto(stProducto *unProducto)
 {
@@ -214,7 +216,6 @@ void mostrarProductoClientes(stProducto *unProducto)
     printf("\t| Precio unidad: %.2f | ", unProducto->precio);
 
     printf("\t| Subtotal: %.2f |\n", unProducto->precio * unProducto->cantidad);
-    puts("\n");
 }
 
 
@@ -281,9 +282,7 @@ void mostrarProductosenArreglo(stProducto unArregloProducto[], int *validos)
     int i = 0;
     for (i = 0; i < *validos; i++)
     {
-
         mostrarProductoClientes(&unArregloProducto[i]);
-        puts("\n-------------------------------------------------------------------------------\n");
     }
 }
 

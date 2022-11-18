@@ -86,6 +86,16 @@ int generarNumeroPedido(char archivoPedido[])
     return idPedido;
 }
 
+void generarFechaActual(char unArregloFecha[])
+{
+
+    time_t tiempo = time(0);
+    struct tm *tlocal = localtime(&tiempo);
+    char output[12];
+    strftime(output, 12, "%d/%m/%y", tlocal);
+    strcpy(unArregloFecha, output);
+}
+
 
 void crearPedido(stPedido *unPedido, int idCliente, int idPedido, int validosProductos, stProducto unArregloProductos[])
 {

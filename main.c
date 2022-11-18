@@ -69,15 +69,6 @@ int main()
 }
 
 ///--------Generales--------------
-void generarFechaActual(char unArregloFecha[])
-{
-
-    time_t tiempo = time(0);
-    struct tm *tlocal = localtime(&tiempo);
-    char output[12];
-    strftime(output, 12, "%d/%m/%y", tlocal);
-    strcpy(unArregloFecha, output);
-}
 
 
 void mostrarCorrecto(int unInt)
