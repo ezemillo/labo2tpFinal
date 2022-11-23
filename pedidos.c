@@ -5,8 +5,8 @@ void mostrarPedido(stPedido unPedido)
 {
 
     printf("\n\t Pedido n: %d \n", unPedido.idPedido);
-    printf("\n\t Cliente n: %d \n", unPedido.idCliente);
-    if (unPedido.pedidoAnulado == 1)
+    printf("\t Cliente n: %d \n", unPedido.idCliente);
+    /*if (unPedido.pedidoAnulado == 1)
     {
         printf("\n\t Su Pedido esta activo  \n");
         printf("\n");
@@ -16,12 +16,12 @@ void mostrarPedido(stPedido unPedido)
         puts("\n\t Su Pedido esta anulado  \n");
         printf("\n");
     }
+    */
+    ///mostrarProductosenArreglo(unPedido.productos, &unPedido.cantProductos);
 
-    mostrarProductosenArreglo(unPedido.productos, &unPedido.cantProductos);
-
-    printf("\n\t Fecha del pedido: %s \n", unPedido.fecha);
-    printf("\n\t Notas adicionales: %s \n", unPedido.descripcion);
-    printf("\n\t Importe total: %.2f \n", unPedido.costo);
+    printf("\t Fecha del pedido: %s ", unPedido.fecha);
+    ///printf("\n\t Notas adicionales: %s \n", unPedido.descripcion);
+    printf("\t Importe total: %.2f \n", unPedido.costo);
 }
 
 int pasarPedidoaArchivo(char archivoPedido[], stPedido *unPedido4, int posicion)
@@ -45,17 +45,25 @@ int pasarPedidoaArchivo(char archivoPedido[], stPedido *unPedido4, int posicion)
 }
 
 
+
 int pasarPedidoPoridClienteaArreglo(int idCliente, stPedido unArregloPedidos[], int dimArreglo, char archivoPedido[])
 {
-    int validos = 0;
-    int posPedido = 0;
+        stPedido P;
+        FILE* archivo = fopen (archivoPedido, "rb");
+        int contador=0;
+        if (archivo){
+                while (contador< dimArreglo && fread(&P, sizeof(stPedido),1, archivo)>0){
+                    if (idCliente==P.idCliente){
+                        unArregloPedidos[contador]=P;
+                        contador++;
+                    }
 
-    while (validos < dimArreglo && posPedido != -1)
-    {
-        posPedido = buscarPosPedidoPoridCliente(idCliente, posPedido, archivoPedido, 1);
-    }
+                }
 
-    return posPedido;
+            fclose(archivo);
+        }
+
+    return contador; //CAPACIDAD DEL ARREGLO DE PEDIDOS
 }
 
 
@@ -150,65 +158,8 @@ void mostrarTodosPedidosenArchivo(char archivoPedidos[])
 }
 
 
-int buscarPosPedidoPoridCliente(int idCliente, int posInicial, char archivoPedido[], int vistaAdmin)
-{
-    stPedido unPedido;
-    FILE *puntFile;
-    puntFile = fopen(archivoPedido, "rb");
-    int pos = -1;
-    int flag = 0;
-
-    if (puntFile != NULL)
-    {
-
-        fseek(puntFile, posInicial * sizeof(stPedido), SEEK_SET);
-        while (flag != 1)
-        {
-            if (fread(&unPedido, sizeof(stPedido), 1, puntFile) > 0)
-            {
-                if (unPedido.idCliente == idCliente)
-                {
-                    pos = posInicial;
-                    flag = 1;
-                }
-                posInicial++;
-            }
-            else
-            {
-                flag = 1;
-                pos = -1;
-            }
-        }
-        fclose(puntFile);
-    }
-    return pos;
-}
 
 
-void mostrarPedidosPorCliente(char archivoPedido[], int idCliente, int admin) // vista admin=1
-{
-    int pos = 0;
-    int noPedido = 0;
-
-    noPedido = buscarPosPedidoPoridCliente(idCliente, pos, archivoPedido, admin);
-    if (noPedido == -1)
-    {
-        puts("No tiene pedidos cargados.");
-    }
-    else
-    {
-        while (pos != -1)
-        {
-            pos = buscarPosPedidoPoridCliente(idCliente, pos, archivoPedido, admin);
-            if (pos != -1)
-            {
-                mostrarunPedidoEnArchivo(pos, archivoPedido);
-
-                pos++;
-            }
-        }
-    }
-}
 
 
 void mostrarunPedidoEnArchivo(int pos, char archivoPedido[])
@@ -274,3 +225,144 @@ float costoTotalPedido(stPedido unPedido)
 
     return total;
 }
+
+
+int buscarPosPedidoPoridCliente(int idCliente, int posInicial, char archivoPedido[], int vistaAdmin)
+{
+    stPedido unPedido;
+    FILE *puntFile;
+    puntFile = fopen(archivoPedido, "rb");
+    int pos = -1;
+    int flag = 0;
+
+    if (puntFile != NULL)
+    {
+
+        fseek(puntFile, posInicial * sizeof(stPedido), SEEK_SET);
+        while (flag != 1)
+        {
+            if (fread(&unPedido, sizeof(stPedido), 1, puntFile) > 0)
+            {
+                if (unPedido.idCliente == idCliente)
+                {
+                    pos = posInicial;
+                    flag = 1;
+                }
+                posInicial++;
+            }
+            else
+            {
+                flag = 1;
+                pos = -1;
+            }
+        }
+        fclose(puntFile);
+    }
+    return pos;
+}
+
+
+void mostrarPedidosPorCliente(char archivoPedido[], int idCliente, int admin) // vista admin=1
+{
+
+    int pos = 0;
+    int noPedido = 0;
+
+    noPedido = buscarPosPedidoPoridCliente(idCliente, pos, archivoPedido, admin);
+    if (noPedido == -1)
+    {
+        puts("No tiene pedidos cargados.");
+    }
+    else
+    {
+        while (pos != -1)
+        {
+            pos = buscarPosPedidoPoridCliente(idCliente, pos, archivoPedido, admin);
+            if (pos != -1)
+            {
+                mostrarunPedidoEnArchivo(pos, archivoPedido);
+
+                pos++;
+            }
+        }
+    }
+}
+void crearPedidoyGuardarEnArchivoRandom(char archivoPedido[], int idCliente)
+{
+    stProducto unProducto;
+
+    stPedido unPedido;
+    generarProductoRandom(&unProducto);
+    int idPedido = generarNumeroPedido(archivoPedido);
+    crearPedidoRandom(&unPedido, idCliente, idPedido, unProducto);
+    pasarPedidoaArchivo(archivoPedido, &unPedido, idPedido);
+
+
+}
+
+void cargarArchivoPedidosRandom(char archivoPedidos[])
+{
+    for(int i=0; i<55;i++){
+
+        for(int j=0; j<40;j++){
+            crearPedidoyGuardarEnArchivoRandom(archivoPedidos,i);
+
+        }
+
+    }
+
+}
+
+void generarProductoRandom(stProducto* unProducto){
+unProducto->cantidad=1;
+strcpy(unProducto->categoria, "random");
+unProducto->hayStock=1;
+unProducto->idProducto=25;
+strcpy(unProducto->nombreProducto, "Producto Random");
+unProducto->precio = 5;
+}
+
+void crearPedidoRandom(stPedido *unPedido, int idCliente, int idPedido, stProducto unProducto)
+{
+
+    unPedido->idPedido = idPedido;
+    unPedido->idCliente = idCliente;
+    unPedido->cantProductos = 1;
+    unPedido->productos[0] = unProducto;
+    char fechaActual[12];
+    generarFechaRandom2(fechaActual,idPedido);
+    strcpy(unPedido->fecha, fechaActual);
+    unPedido->pedidoAnulado = 1;
+
+
+    strcpy(unPedido->descripcion , "sin comentarios");
+
+    unPedido->costo = rand()%5000;
+}
+
+
+void generarFechaRandom2(char unArregloFecha[], int contador)
+{
+    srand(time(NULL)- contador);
+    unArregloFecha[0] = rand()%3+48;
+    unArregloFecha[1] = rand()%8+49;
+    unArregloFecha[2] = 47;
+    unArregloFecha[3] = rand()%2+48;
+    if(unArregloFecha[3] == 48)
+    {
+        unArregloFecha[4] = rand()%8+49;
+    }
+    else
+    {
+        unArregloFecha[4] = rand()%2+48;
+    }
+
+    unArregloFecha[5] = 47;
+    unArregloFecha[6] = 50;
+    unArregloFecha[7] = 50;
+    unArregloFecha[8] = 00;
+
+}
+
+
+

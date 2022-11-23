@@ -29,7 +29,7 @@ typedef struct
     char genero;
     int rol;    // 1: es admin - 0: es com n
     int activo; // indica 1 activo y 0 inactivo
-} stCliente;
+}stCliente;
 
 /// Clientes
 int idClienteNuevo(char archivo[]);

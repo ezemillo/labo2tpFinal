@@ -5,7 +5,6 @@ int idClienteNuevo(char archivo[])
 {
     FILE *archi;
     archi = fopen(archivo, "rb");
-    stCliente a;
     int i = 0;
     if (archi != NULL)
     {
@@ -61,21 +60,21 @@ void altaDeCliente(char archivo[], int rol)
 
         do
         {
-            printf("Ingrese nombre: ");
+            printf("Ingrese nombre Max 30: ");
             fflush(stdin);
             scanf("%s", cliente.nombre);
         }
         while (strlen(cliente.nombre) > 30);
         do
         {
-            printf("Ingrese apellido: ");
+            printf("Ingrese apellido Max 30: ");
             fflush(stdin);
             scanf("%s", cliente.apellido);
         }
         while (strlen(cliente.apellido) > 30);
         do
         {
-            printf("Ingrese username: ");
+            printf("Ingrese usernameMax 20: ");
             fflush(stdin);
             scanf("%s", cliente.userName);
             var = verificarClienteYaExiste(archivo, cliente);
@@ -83,7 +82,7 @@ void altaDeCliente(char archivo[], int rol)
         while (var == 0 || strlen(cliente.userName) > 20);
         do
         {
-            printf("Ingrese password: ");
+            printf("Ingrese password max 20: ");
             fflush(stdin);
             scanf("%s", cliente.password);
         }
@@ -91,7 +90,7 @@ void altaDeCliente(char archivo[], int rol)
 
         do
         {
-            printf("Ingrese email: ");
+            printf("Ingrese email max 30: ");
             fflush(stdin);
             scanf("%s", cliente.mail);
         }
@@ -245,7 +244,6 @@ void gestionarModificarCliente(char pedidos[], char productos[], char clientes[]
     FILE *archivito;
     archivito = fopen(clientes, "r+b");
     int resultado = 0;
-    char usuario[20];
     if (archivito != NULL)
     {
         while (fread(&cliente, sizeof(stCliente), 1, archivito) > 0)

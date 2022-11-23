@@ -11,7 +11,7 @@
 #include "productos.h"
 #include "clientes.h"
 #include "pedidos.h"
-
+#include "arbol.h"
 
 #include "menu.h"
 
@@ -25,6 +25,10 @@ int cambiarOpcionSeleccionada(int teclaPulsada, int cantidadOpciones, int opcion
 void pintarPantallaConMenu(char *titulo, char *opciones[], int cantidadDeOpciones, int opcionSelecionada);
 void mostrarPantallaConMenu(char *titulo, char *opciones[], int cantidadDeOpciones, int opcionSelecionada);
 void mostrarOpcion(char *opcion, int numeroDeOpcion, int opcionSeleccionada);
+void funcionArbolEnMenu(char archivoCliente[]);
+int getMesIngreso(char fecha[]);
+
+
 /// Funciones Menu
 int crearMenuModificarCliente();
 int crearMenuDeInicio();
@@ -49,6 +53,8 @@ void gestionarEntreMenuAdministradorYCliente(char clientes[], char pedido[], cha
 int gestionarMenu(char *titulo, char *opciones[], int cantidadDeOpciones, int opcionSeleccionada);
 void volverAlMenuClientes(char clientes[], char pedidos[], char productos[], int *idClienteActivo);
 void volverAlMenuAdministrador(char clientes[], char pedidos[], char productos[], int *idClienteActivo);
+void funcionModificarClienteEnArbol(char archivoClientes[]);
+void funcionBorrarNodoArbol(char archivoCliente[]);
 
 
 
@@ -65,6 +71,9 @@ int main()
 
     int idClienteActivo = 1;
     crearApp(clientes, pedidos, productos, &idClienteActivo);
+
+
+
     return 0;
 }
 
@@ -209,8 +218,9 @@ int crearMenuAdministrador()
     char *titulo = "Menu de administrador";
     char *opciones[] = {"Ver clientes", "Modificar clientes", "Dar de baja clientes", "Ver pedidos de un cliente", "Ver pedidos",
                         "Dar de baja pedidos", "Ver listado de productos", "Agregar productos",
-                        "Modificar productos", "Dar de baja productos", "Cerrar sesion"};
-    int cantidadDeOpciones = 11;
+                        "Modificar productos", "Dar de baja productos","Mostrar arbol y liquidar periodo","Modificar Cliente en Arbol","Borrar nodo de arbol", "Cerrar sesion"
+                       };
+    int cantidadDeOpciones = 14;
     opcionSeleccionada = gestionarMenu(titulo, opciones, cantidadDeOpciones, opcionSeleccionada);
     return opcionSeleccionada;
 }
@@ -318,6 +328,24 @@ void gestionarOpcionDeMenuDeAdministrador(int opcionSeleccionada, char clientes[
         bajaDeProducto(productos, idProducto);
         break;
     case 10:
+
+        funcionArbolEnMenu(clientes);
+
+
+
+        break;
+    case 11:
+
+        funcionModificarClienteEnArbol(clientes);
+
+        break;
+    case 12:
+
+        funcionBorrarNodoArbol(clientes);
+
+        break;
+
+    case 13:
         opcionSeleccionada = crearMenuDeInicio();
         gestionarOpcionDeMenuDeInicio(clientes, pedidos, productos, opcionSeleccionada, idActivo);
         break;
@@ -364,12 +392,13 @@ void gestionarMenuClientes(int opcionSeleccionada, char clientes[], char pedidos
             opcionSeleccionadaMenuClientes = crearMenuComercios();
             gestionarOpcionDeMenuDeComercios(opcionSeleccionadaMenuClientes, clientes, pedidos, productos, idClienteActivo, unArregloProductos, &validos);
 
-        } while (pedidoFinalizado != 1);
+        }
+        while (pedidoFinalizado != 1);
         volverAlMenuClientes(clientes, pedidos, productos, idClienteActivo);
         break;
     case 3:
         mostrarPedidosPorCliente(pedidos, *idClienteActivo, 1);
-        i = buscarPosPedidoPoridCliente(*idClienteActivo, 0, pedidos, 1);
+//            int i = buscarPosPedidoPoridCliente(*idClienteActivo, 0, pedidos, 1);
         if (i != -1)
         {
             printf("\n\tIngrese el id del pedido que quiere dar de baja/alta:\n");
@@ -716,7 +745,8 @@ int gestionarMenu(char *titulo, char *opciones[], int cantidadDeOpciones, int op
         teclaPulsada = getch();
         opcionSeleccionada = cambiarOpcionSeleccionada(teclaPulsada, cantidadDeOpciones, opcionSeleccionada);
         pintarPantallaConMenu(titulo, opciones, cantidadDeOpciones, opcionSeleccionada);
-    } while (teclaPulsada != Enter);
+    }
+    while (teclaPulsada != Enter);
     return opcionSeleccionada;
 }
 
@@ -775,4 +805,75 @@ void mostrarOpcion(char *opcion, int numeroDeOpcion, int opcionSeleccionada)
 
 
 
+void funcionArbolEnMenu(char archivoCliente[])
+{
 
+    int idCliente=0;
+
+    char fechaIngreso[10];
+    int fechaIng;
+
+    nodoArbolCliente* raiz = cargarArbolDesdeArchivoCliente(archivoCliente);
+    puts("Arbol cargado con Exito\n");
+    preOrden(raiz);
+    puts("Ingrese el IDCliente a liquidar\n");
+    scanf("%d",&idCliente);
+    puts("Ingrese el mes y año a liquidar formato mmaa\n");
+
+    fflush(stdin);
+    fechaIng = getMesIngreso(gets(fechaIngreso));
+
+
+    nodoArbolCliente * cliente = buscarClienteEnArbol(raiz,idCliente);
+    nodoPedido* lista = cliente->listaDePedidos;
+    float suma = liquidarClientePorFecha(lista,fechaIng);
+
+    printf("La suma de los pedidos del periodio %d, del cliente %d es: %f \n",fechaIng,idCliente,suma);
+
+
+}
+
+int getMesIngreso(char fecha[])
+{
+
+    int m0 = fecha[0]-48;
+    if(m0==0)
+    {
+        m0=9;
+    }
+
+    int m1 = fecha[1]-48;
+    int m2 = fecha[2]-48;
+    int m3 = fecha[3]-48;
+
+
+    return m0*1000 + m1 *100 + m2*10 + m3;
+
+}
+
+void funcionModificarClienteEnArbol(char archivoClientes[])
+{
+    nodoArbolCliente* raiz = cargarArbolDesdeArchivoCliente(archivoClientes);
+    puts("Arbol cargado con Exito\n");
+    preOrden(raiz);
+
+    modificarClienteEnArbol(raiz);
+    /// guardar en archivo cliente la modificacion
+}
+
+
+void funcionBorrarNodoArbol(char archivoCliente[])
+{
+
+    int idCliente=0;
+
+
+    nodoArbolCliente* raiz = cargarArbolDesdeArchivoCliente(archivoCliente);
+    puts("Arbol cargado con Exito\n");
+    preOrden(raiz);
+    puts("Ingrese el IDCliente a borrar \n");
+    scanf("%d",&idCliente);
+    borrarNodoArbol(raiz,idCliente);
+    preOrden(raiz);
+
+}

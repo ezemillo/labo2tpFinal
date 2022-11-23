@@ -42,4 +42,5 @@ float costoTotalArreglo(stProducto unArregloProductos[], int validos);
 void modificarProductoDeUnArreglo(stProducto unArregloProducto[], int *validos, int posProducto, int cantidad);
 int buscarPosProductoEnArreglo(stProducto unArregloProducto[], int *validos, int idProducto);
 
+
 #endif // PRODUCTOS_H_INCLUDED

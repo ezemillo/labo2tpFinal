@@ -172,7 +172,7 @@
 	<stdlib.h>
 	<windows.h>
 
-1668800470 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\labo2tpfinal\main.c
+1668956436 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\labo2tpfinal\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -183,11 +183,12 @@
 	"productos.h"
 	"clientes.h"
 	"pedidos.h"
+	"arbol.h"
 	"menu.h"
 
 1668095394 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\labo2tpfinal\gotoxy.h
 
-1668095394 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\labo2tpfinal\clientes.c
+1668804951 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\labo2tpfinal\clientes.c
 	"clientes.h"
 
 1668723538 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\labo2tpfinal\clientes.h
@@ -209,7 +210,7 @@
 1668800470 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\labo2tpfinal\pedidos.c
 	"pedidos.h"
 
-1668800470 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\labo2tpfinal\pedidos.h
+1668866990 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\labo2tpfinal\pedidos.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -220,7 +221,7 @@
 	"clientes.h"
 	"menu.h"
 
-1668725095 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\labo2tpfinal\productos.h
+1668959350 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\labo2tpfinal\productos.h
 	<strings.h>
 	<conio.h>
 	<time.h>
@@ -234,10 +235,10 @@
 	<stdio.h>
 	<stdlib.h>
 
-1668723401 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\labo2tpfinal\nodopedido.c
+1668961501 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\labo2tpfinal\nodopedido.c
 	"nodoPedido.h"
 
-1668800002 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\labo2tpfinal\arbol.c
+1668961501 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\labo2tpfinal\arbol.c
 	"arbol.h"
 	"nodoPedido.h"
 
@@ -325,13 +326,428 @@
 	"menu.h"
 	"nodoPedido.h"
 
-1668723383 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\labo2tpfinal\nodopedido.h
+1668959350 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\labo2tpfinal\nodopedido.h
 	"pedidos.h"
 
-1668799833 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\labo2tpfinal\arbol.h
+1668956214 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\labo2tpfinal\arbol.h
 	"clientes.h"
 	"pedidos.h"
 	"productos.h"
 	"menu.h"
+	"nodoPedido.h"
+
+1669043265 source:c:\users\bcostales\desktop\tpfinal\version2\labo2tpfinal\arbol.c
+	"arbol.h"
+
+1669042719 c:\users\bcostales\desktop\tpfinal\version2\labo2tpfinal\arbol.h
+	"clientes.h"
+	"productos.h"
+	"menu.h"
+	"nodoPedido.h"
+
+1669042320 c:\users\bcostales\desktop\tpfinal\version2\labo2tpfinal\clientes.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<time.h>
+	<windows.h>
+	"gotoxy.h"
+	"productos.h"
+	"pedidos.h"
+	"menu.h"
+	<stdio.h>
+	<stdlib.h>
+
+1669046100 c:\users\bcostales\desktop\tpfinal\version2\labo2tpfinal\gotoxy.h
+
+1669046100 c:\users\bcostales\desktop\tpfinal\version2\labo2tpfinal\productos.h
+	<strings.h>
+	<conio.h>
+	<time.h>
+	<windows.h>
+	"gotoxy.h"
+
+1669039861 c:\users\bcostales\desktop\tpfinal\version2\labo2tpfinal\pedidos.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<time.h>
+	<windows.h>
+	"productos.h"
+	"clientes.h"
+	"menu.h"
+
+1669046100 c:\users\bcostales\desktop\tpfinal\version2\labo2tpfinal\menu.h
+
+1669046100 c:\users\bcostales\desktop\tpfinal\version2\labo2tpfinal\nodopedido.h
+	"pedidos.h"
+
+1669046100 source:c:\users\bcostales\desktop\tpfinal\version2\labo2tpfinal\clientes.c
+	"clientes.h"
+
+1669046100 source:c:\users\bcostales\desktop\tpfinal\version2\labo2tpfinal\gotoxy.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+
+1669046100 source:c:\users\bcostales\desktop\tpfinal\version2\labo2tpfinal\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<time.h>
+	<windows.h>
+	"gotoxy.h"
+	"productos.h"
+	"clientes.h"
+	"pedidos.h"
+	"arbol.h"
+	"menu.h"
+
+1669046100 source:c:\users\bcostales\desktop\tpfinal\version2\labo2tpfinal\menu.c
+
+1669040965 source:c:\users\bcostales\desktop\tpfinal\version2\labo2tpfinal\nodopedido.c
+	"nodoPedido.h"
+
+1669039955 source:c:\users\bcostales\desktop\tpfinal\version2\labo2tpfinal\pedidos.c
+	"pedidos.h"
+
+1669046100 source:c:\users\bcostales\desktop\tpfinal\version2\labo2tpfinal\productos.c
+	"productos.h"
+	<stdio.h>
+	<stdlib.h>
+
+1669052997 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\ptfinal bruno\labo2tpfinal\labo2tpfinal\arbol.c
+	"arbol.h"
+
+1669051811 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\ptfinal bruno\labo2tpfinal\labo2tpfinal\arbol.h
+	"clientes.h"
+	"productos.h"
+	"menu.h"
+	"nodoPedido.h"
+
+1669075641 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\ptfinal bruno\labo2tpfinal\labo2tpfinal\clientes.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<time.h>
+	<windows.h>
+	"gotoxy.h"
+	"productos.h"
+	"pedidos.h"
+	"menu.h"
+	<stdio.h>
+	<stdlib.h>
+
+1669046100 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\ptfinal bruno\labo2tpfinal\labo2tpfinal\gotoxy.h
+
+1669046100 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\ptfinal bruno\labo2tpfinal\labo2tpfinal\productos.h
+	<strings.h>
+	<conio.h>
+	<time.h>
+	<windows.h>
+	"gotoxy.h"
+
+1669082706 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\ptfinal bruno\labo2tpfinal\labo2tpfinal\pedidos.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<time.h>
+	<windows.h>
+	"productos.h"
+	"clientes.h"
+	"menu.h"
+
+1669046100 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\ptfinal bruno\labo2tpfinal\labo2tpfinal\menu.h
+
+1669051640 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\ptfinal bruno\labo2tpfinal\labo2tpfinal\nodopedido.h
+	"pedidos.h"
+
+1669050539 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\ptfinal bruno\labo2tpfinal\labo2tpfinal\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<time.h>
+	<windows.h>
+	"gotoxy.h"
+	"productos.h"
+	"clientes.h"
+	"pedidos.h"
+	"arbol.h"
+	"menu.h"
+
+1669075768 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\ptfinal bruno\labo2tpfinal\labo2tpfinal\clientes.c
+	"clientes.h"
+
+1669046100 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\ptfinal bruno\labo2tpfinal\labo2tpfinal\gotoxy.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+
+1669046100 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\ptfinal bruno\labo2tpfinal\labo2tpfinal\menu.c
+
+1669047898 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\ptfinal bruno\labo2tpfinal\labo2tpfinal\nodopedido.c
+	"nodoPedido.h"
+
+1669046100 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\ptfinal bruno\labo2tpfinal\labo2tpfinal\productos.c
+	"productos.h"
+	<stdio.h>
+	<stdlib.h>
+
+1669052180 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\ptfinal bruno\labo2tpfinal\labo2tpfinal\pedidos.c
+	"pedidos.h"
+
+1669157616 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\ptfinal random\labo2tpfinal\labo2tpfinal\arbol.c
+	"arbol.h"
+
+1669051811 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\ptfinal random\labo2tpfinal\labo2tpfinal\arbol.h
+	"clientes.h"
+	"productos.h"
+	"menu.h"
+	"nodoPedido.h"
+
+1669075641 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\ptfinal random\labo2tpfinal\labo2tpfinal\clientes.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<time.h>
+	<windows.h>
+	"gotoxy.h"
+	"productos.h"
+	"pedidos.h"
+	"menu.h"
+	<stdio.h>
+	<stdlib.h>
+
+1669046100 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\ptfinal random\labo2tpfinal\labo2tpfinal\gotoxy.h
+
+1669046100 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\ptfinal random\labo2tpfinal\labo2tpfinal\productos.h
+	<strings.h>
+	<conio.h>
+	<time.h>
+	<windows.h>
+	"gotoxy.h"
+
+1669082706 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\ptfinal random\labo2tpfinal\labo2tpfinal\pedidos.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<time.h>
+	<windows.h>
+	"productos.h"
+	"clientes.h"
+	"menu.h"
+
+1669046100 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\ptfinal random\labo2tpfinal\labo2tpfinal\menu.h
+
+1669083652 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\ptfinal random\labo2tpfinal\labo2tpfinal\nodopedido.h
+	"pedidos.h"
+
+1669075768 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\ptfinal random\labo2tpfinal\labo2tpfinal\clientes.c
+	"clientes.h"
+
+1669046100 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\ptfinal random\labo2tpfinal\labo2tpfinal\gotoxy.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+
+1669157162 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\ptfinal random\labo2tpfinal\labo2tpfinal\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<time.h>
+	<windows.h>
+	"gotoxy.h"
+	"productos.h"
+	"clientes.h"
+	"pedidos.h"
+	"arbol.h"
+	"menu.h"
+
+1669046100 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\ptfinal random\labo2tpfinal\labo2tpfinal\menu.c
+
+1669047898 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\ptfinal random\labo2tpfinal\labo2tpfinal\nodopedido.c
+	"nodoPedido.h"
+
+1669083249 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\ptfinal random\labo2tpfinal\labo2tpfinal\pedidos.c
+	"pedidos.h"
+
+1669046100 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\ptfinal random\labo2tpfinal\labo2tpfinal\productos.c
+	"productos.h"
+	<stdio.h>
+	<stdlib.h>
+
+1669157933 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\tpfinal cliente\labo2tpfinal\labo2tpfinal\arbol.c
+	"arbol.h"
+
+1669051811 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\tpfinal cliente\labo2tpfinal\labo2tpfinal\arbol.h
+	"clientes.h"
+	"productos.h"
+	"menu.h"
+	"nodoPedido.h"
+
+1669075641 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\tpfinal cliente\labo2tpfinal\labo2tpfinal\clientes.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<time.h>
+	<windows.h>
+	"gotoxy.h"
+	"productos.h"
+	"pedidos.h"
+	"menu.h"
+	<stdio.h>
+	<stdlib.h>
+
+1669046100 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\tpfinal cliente\labo2tpfinal\labo2tpfinal\gotoxy.h
+
+1669046100 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\tpfinal cliente\labo2tpfinal\labo2tpfinal\productos.h
+	<strings.h>
+	<conio.h>
+	<time.h>
+	<windows.h>
+	"gotoxy.h"
+
+1669082706 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\tpfinal cliente\labo2tpfinal\labo2tpfinal\pedidos.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<time.h>
+	<windows.h>
+	"productos.h"
+	"clientes.h"
+	"menu.h"
+
+1669046100 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\tpfinal cliente\labo2tpfinal\labo2tpfinal\menu.h
+
+1669083652 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\tpfinal cliente\labo2tpfinal\labo2tpfinal\nodopedido.h
+	"pedidos.h"
+
+1669075768 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\tpfinal cliente\labo2tpfinal\labo2tpfinal\clientes.c
+	"clientes.h"
+
+1669046100 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\tpfinal cliente\labo2tpfinal\labo2tpfinal\gotoxy.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+
+1669157162 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\tpfinal cliente\labo2tpfinal\labo2tpfinal\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<time.h>
+	<windows.h>
+	"gotoxy.h"
+	"productos.h"
+	"clientes.h"
+	"pedidos.h"
+	"arbol.h"
+	"menu.h"
+
+1669046100 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\tpfinal cliente\labo2tpfinal\labo2tpfinal\menu.c
+
+1669047898 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\tpfinal cliente\labo2tpfinal\labo2tpfinal\nodopedido.c
+	"nodoPedido.h"
+
+1669196879 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\tpfinal cliente\labo2tpfinal\labo2tpfinal\pedidos.c
+	"pedidos.h"
+
+1669046100 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\tpfinal cliente\labo2tpfinal\labo2tpfinal\productos.c
+	"productos.h"
+	<stdio.h>
+	<stdlib.h>
+
+1669075768 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\tpfinal ultimo\labo2tpfinal\labo2tpfinal\clientes.c
+	"clientes.h"
+
+1669075641 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\tpfinal ultimo\labo2tpfinal\labo2tpfinal\clientes.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<time.h>
+	<windows.h>
+	"gotoxy.h"
+	"productos.h"
+	"pedidos.h"
+	"menu.h"
+	<stdio.h>
+	<stdlib.h>
+
+1669046100 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\tpfinal ultimo\labo2tpfinal\labo2tpfinal\gotoxy.h
+
+1669046100 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\tpfinal ultimo\labo2tpfinal\labo2tpfinal\productos.h
+	<strings.h>
+	<conio.h>
+	<time.h>
+	<windows.h>
+	"gotoxy.h"
+
+1669082706 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\tpfinal ultimo\labo2tpfinal\labo2tpfinal\pedidos.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<time.h>
+	<windows.h>
+	"productos.h"
+	"clientes.h"
+	"menu.h"
+
+1669046100 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\tpfinal ultimo\labo2tpfinal\labo2tpfinal\menu.h
+
+1669046100 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\tpfinal ultimo\labo2tpfinal\labo2tpfinal\gotoxy.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+
+1669224331 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\tpfinal ultimo\labo2tpfinal\labo2tpfinal\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<time.h>
+	<windows.h>
+	"gotoxy.h"
+	"productos.h"
+	"clientes.h"
+	"pedidos.h"
+	"arbol.h"
+	"menu.h"
+
+1669223940 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\tpfinal ultimo\labo2tpfinal\labo2tpfinal\arbol.h
+	"clientes.h"
+	"productos.h"
+	"menu.h"
+	"nodoPedido.h"
+
+1669222433 c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\tpfinal ultimo\labo2tpfinal\labo2tpfinal\nodopedido.h
+	"pedidos.h"
+
+1669046100 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\tpfinal ultimo\labo2tpfinal\labo2tpfinal\menu.c
+
+1669196879 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\tpfinal ultimo\labo2tpfinal\labo2tpfinal\pedidos.c
+	"pedidos.h"
+
+1669046100 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\tpfinal ultimo\labo2tpfinal\labo2tpfinal\productos.c
+	"productos.h"
+	<stdio.h>
+	<stdlib.h>
+
+1669223951 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\tpfinal ultimo\labo2tpfinal\labo2tpfinal\arbol.c
+	"arbol.h"
+
+1669226635 source:c:\users\ezemi\onedrive - utn frmdp\documentos\utn\2cuatrimestre\programacion\tpfinal\tpfinal ultimo\labo2tpfinal\labo2tpfinal\nodopedido.c
 	"nodoPedido.h"
 
